@@ -1,0 +1,5 @@
+{
+    "VERCEL_HANDLER_URL": "https://test-tg-serverles.vercel.app/api/trigger",
+    "YOUR_SECRET_KEY": "'IniAdalahKunciRahasiaSayaYangSangatPanjang'",
+    "CHECK_INTERVAL_SECONDS": 30
+}
