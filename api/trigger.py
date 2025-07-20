@@ -67,12 +67,18 @@ async def process_chain(bot, chain_id, config):
 
 
 async def main_logic():
+    """
+    Fungsi async utama untuk menjalankan logika bot secara BERURUTAN.
+    """
     application = Application.builder().token(TELEGRAM_TOKEN).build()
     
-    # Jalankan semua proses secara bersamaan. `return_exceptions=True` memastikan
-    # bahwa kegagalan di satu tugas tidak akan menghentikan yang lain.
-    tasks = [process_chain(application.bot, chain, config) for chain, config in CHAINS_CONFIG.items()]
-    await asyncio.gather(*tasks, return_exceptions=True)
+    logger.info("--- Memulai siklus pembaruan ---")
+    # Jalankan proses untuk setiap rantai satu per satu (secara berurutan)
+    for chain, config in CHAINS_CONFIG.items():
+        await process_chain(application.bot, chain, config)
+        # Jeda singkat antar proses untuk menghindari rate limit (opsional tapi aman)
+        await asyncio.sleep(1) 
+    
     logger.info("--- Siklus pembaruan selesai ---")
 
 

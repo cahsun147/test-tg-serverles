@@ -7,8 +7,8 @@ logger = logging.getLogger(__name__)
 BASE_API_URL = "https://www.grokonabase.xyz/test/dex"
 
 # --- Konfigurasi untuk Percobaan Ulang Cerdas ---
-TOTAL_WAIT_SECONDS = 30  # Total waktu maksimal untuk menunggu API (dalam detik)
-RETRY_INTERVAL_SECONDS = 2 # Jeda antar percobaan
+TOTAL_WAIT_SECONDS = 15  # Total waktu maksimal untuk menunggu API (dalam detik)
+RETRY_INTERVAL_SECONDS = 3 # Jeda antar percobaan
 
 async def fetch_trending_pairs(chain_id: str, timeframe: str = "h24"):
     """

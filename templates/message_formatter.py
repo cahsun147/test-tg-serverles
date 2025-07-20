@@ -5,11 +5,9 @@ import pytz
 logger = logging.getLogger(__name__)
 
 def format_top_10_message(pairs: list, chain_name: str):
-    """Memformat daftar 10 token teratas menjadi satu pesan besar."""
     if not pairs:
         return None
 
-    # Mengatur zona waktu ke Waktu Indonesia Barat (WIB)
     tz_wib = pytz.timezone('Asia/Jakarta')
     now_wib = datetime.now(tz_wib)
     timestamp = now_wib.strftime("%d %B %Y, %H:%M:%S WIB")
@@ -53,4 +51,3 @@ def format_top_10_message(pairs: list, chain_name: str):
             continue
             
     return "\n".join(message_parts)
-
